@@ -7,7 +7,7 @@
 // - **teks** = tebal (dipakai untuk gesture Special Week).
 // - head: true = bubble pertama dari satu pengirim (tampil avatar + nama).
 // - Newline (\n) dirender apa adanya (white-space: pre-wrap).
-// - Gambar/stiker/GIF disimulasikan pakai type: "image" + letter/emoji (atau isi image: "/images/xxx.png").
+// - Gambar/stiker/GIF disimulasikan pakai type: "image" + letter/emoji (atau isi image: "/images/xxx.webp").
 
 // =========================================================
 // 1) SKENARIO NGOBROL
@@ -40,7 +40,7 @@ export const CHAT_SCENARIO = [
   { id: 91, from: "bot", time: "07:58",
     text: "Dengerin, ya! Jangan salah paham, aku ngasih tahu bukan berarti aku rajin atau peduli sama nilai fisika kamu. Tapi rumus energi kinetik itu gampang banget, ditulisnya begini:" },
   // Rumus $$...$$ dirender bot jadi gambar (potongan dari screenshot asli).
-  { id: 92, from: "bot", head: true, time: "07:58", type: "image", image: "/images/rumus-ek.png", letter: "Eₖ = ½mv²" },
+  { id: 92, from: "bot", head: true, time: "07:58", type: "image", image: "/images/rumus-ek.webp", letter: "Eₖ = ½mv²" },
   { id: 93, from: "bot", head: true, time: "07:58", text: "Di mana" },
   { id: 94, from: "bot", time: "07:58", text: "𝑚" },
   { id: 95, from: "bot", time: "07:58", text: "itu massa benda dan" },
@@ -69,7 +69,7 @@ export const CHAT_SCENARIO = [
 export const COMMAND_SCENARIO = [
   // 🔎 Pencarian gambar
   { id: 1, from: "sam", head: true, time: "20:20", text: "!img special_week_(umamusume)" },
-  { id: 2, from: "bot", head: true, time: "20:20", type: "image", image: "/images/image2.png", letter: "🖼️",
+  { id: 2, from: "bot", head: true, time: "20:20", type: "image", image: "/images/image2.webp", letter: "🖼️",
     caption: [
       "🖼️ Hasil Gambar\n\n👤 Karakter: special_week_(umamusume)\n🔢 Kode Sesi: 4821\n🆔 Kode Gambar: 7312045\n➡️ Ketik 4821 (siapa saja boleh) atau !next untuk gambar lain dari pencarian ini",
     ] },
@@ -81,7 +81,7 @@ export const COMMAND_SCENARIO = [
 
   // 🎨 Stiker
   { id: 5, from: "sam", head: true, time: "20:22", text: "!sbrat capek banget hari ini 😭" },
-  { id: 6, from: "bot", head: true, time: "20:22", type: "image", image: "/images/image3.png", letter: "capek banget hari ini 😭",
+  { id: 6, from: "bot", head: true, time: "20:22", type: "image", image: "/images/image3.webp", letter: "capek banget hari ini 😭",
     caption: [] },
 
   // 📥 Download media
@@ -89,8 +89,8 @@ export const COMMAND_SCENARIO = [
   { id: 8, from: "bot", head: true, time: "20:23", text: "🎧 judul-lagu.mp3  (4,2 MB)" },
 
   // 🖼️ AI upscale
-  { id: 9, from: "sam", head: true, time: "20:24", type: "image", image: "/images/image4.png", letter: "SD", caption: ["!hd"] },
-  { id: 10, from: "bot", head: true, time: "20:24", type: "image", image: "/images/image5.png", letter: "HD",
+  { id: 9, from: "sam", head: true, time: "20:24", type: "image", image: "/images/image4.webp", letter: "SD", caption: ["!hd"] },
+  { id: 10, from: "bot", head: true, time: "20:24", type: "image", image: "/images/image5.webp", letter: "HD",
     caption: ["✨ Selesai di-upscale"] },
 
   // 📄 Dokumen

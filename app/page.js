@@ -3,15 +3,15 @@ import { useState, useRef, useEffect } from "react";
 import { CHAT_SCENARIO, COMMAND_SCENARIO } from "./scenario";
 
 /* ====== DATA — ganti sesuai kebutuhan ======
-   avatar: URL gambar di /public (mis. "/bot.png"); kalau kosong dipakai huruf. */
+   avatar: URL gambar di /public (mis. "/bot.webp"); kalau kosong dipakai huruf. */
 const PEOPLE = {
-  bot: { name: "Agemasen Bot", color: "#e8c36a", bg: "#c9757d", letter: "A", avatar: "/images/image.png" },
+  bot: { name: "Agemasen Bot", color: "#e8c36a", bg: "#c9757d", letter: "A", avatar: "/images/image.webp" },
   sam: { name: "user1", color: "#53bdeb", bg: "#1f3a5f", letter: "U", avatar: "" },
 };
 const GROUP = {
   title: "Grup Random",
   members: "user1, user2, user3, user4, user5, user6, user7, user8, user9, user10, Agemasen Bot",
-  avatar: "/images/image.png",
+  avatar: "/images/image.webp",
 };
 const SCENARIOS = { chat: CHAT_SCENARIO, command: COMMAND_SCENARIO };
 
