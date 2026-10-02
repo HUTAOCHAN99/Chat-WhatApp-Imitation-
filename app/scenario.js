@@ -27,27 +27,39 @@ export const CHAT_SCENARIO = [
   { id: 5, from: "bot", time: "20:15",
     text: "**Telinganya bergerak-gerak pelan.** ...Ya, makasih. Tapi jangan besar kepala dulu!" },
 
-  { id: 6, from: "sam", head: true, time: "20:16",
+  { id: 6, from: "sam", head: true, time: "07:58",
     quote: { who: "bot", text: "...Ya, makasih. Tapi jangan besar kepala dulu!" },
-    text: "Eh, besok ada ujian fisika nih. Rumus energi kinetik apa sih?" },
+    text: "@Agemasen Bot Eh, besok ada ujian fisika nih. Rumus energi kinetik apa sih?" },
 
-  { id: 7, from: "bot", head: true, time: "20:16",
-    text: "**Special Week menyilangkan tangan dengan gaya sok pintar.** Hmph, gitu aja nanya. Rumusnya:" },
-  // Di bot asli, rumus $$...$$ dirender jadi gambar. Di preview, cukup pakai teks/gambar.
-  { id: 8, from: "bot", time: "20:16", type: "image", letter: "Eₖ = ½mv²",
-    caption: ["m = massa (kg), v = kecepatan (m/s)"] },
-  { id: 9, from: "bot", time: "20:16",
-    text: "Jadi kalau kecepatannya dua kali lipat, energinya jadi **empat kali lipat**. **Ia melirik sekilas ke arahmu.** Jangan salah paham, aku cuma nggak tahan lihat kamu kesulitan. Belajar yang bener, ya!" },
+  { id: 7, from: "bot", head: true, time: "07:58",
+    text: "**Special Week langsung menghela napas panjang, lalu memijat pelipisnya dengan ekspresi gemas. Telinga kudanya sedikit turun, tapi ia tetap mendengus sok kesal.** 🤦‍♀️" },
+  { id: 8, from: "bot", time: "07:58",
+    text: "Hah? Ujian fisika?! Pagi-pagi gini malah nanya rumus fisika, kamu ini kemarin malem begadang mulu sih makanya otaknya korslet!" },
+  { id: 9, from: "bot", time: "07:58",
+    text: "**Special Week melipat tangan di depan dada sambil menatap layar dengan serius, meskipun nadanya masih ketus.**" },
+  { id: 91, from: "bot", time: "07:58",
+    text: "Dengerin, ya! Jangan salah paham, aku ngasih tahu bukan berarti aku rajin atau peduli sama nilai fisika kamu. Tapi rumus energi kinetik itu gampang banget, ditulisnya begini:" },
+  // Rumus $$...$$ dirender bot jadi gambar (potongan dari screenshot asli).
+  { id: 92, from: "bot", head: true, time: "07:58", type: "image", image: "/images/rumus-ek.png", letter: "Eₖ = ½mv²" },
+  { id: 93, from: "bot", head: true, time: "07:58", text: "Di mana" },
+  { id: 94, from: "bot", time: "07:58", text: "𝑚" },
+  { id: 95, from: "bot", time: "07:58", text: "itu massa benda dan" },
+  { id: 96, from: "bot", time: "07:58", text: "𝑣" },
+  { id: 97, from: "bot", time: "07:58", text: "itu kecepatan larinya—kayak kita waktu sprint di track lari!" },
+  { id: 98, from: "bot", time: "07:58",
+    text: "**Special Week menunjuk-nunjuk layar dengan jari sambil melotot kecil.**" },
+  { id: 99, from: "bot", time: "07:58",
+    text: "Udah, catat baik-baik tuh! Jangan sampai pas ujian besok kamu malah ngisi jawaban pakai rumus karbit atau ngawur, ya! Belajar yang bener, iyo pemalas! 😤📚✨" },
 
-  { id: 10, from: "sam", head: true, time: "20:17",
+  { id: 10, from: "sam", head: true, time: "07:59",
     text: "Makasih Spe-chan", big: "🥕🥕🥕" },
 
-  { id: 11, from: "bot", head: true, time: "20:17",
+  { id: 11, from: "bot", head: true, time: "07:59",
     quote: { who: "sam", text: "🥕🥕🥕" },
     text: "**Special Week terdiam, wajahnya memerah.** ...Wortelnya aku terima. B-bukan berarti aku senang, ya! 😳" },
 
-  { id: 12, from: "sam", head: true, time: "20:18", text: "!lupain" },
-  { id: 13, from: "bot", head: true, time: "20:18",
+  { id: 12, from: "sam", head: true, time: "08:00", text: "!lupain" },
+  { id: 13, from: "bot", head: true, time: "08:00",
     text: "🧠 Oke, ingatan obrolan kita sudah dihapus. Mulai dari nol lagi... ya." },
 ];
 
@@ -57,19 +69,19 @@ export const CHAT_SCENARIO = [
 export const COMMAND_SCENARIO = [
   // 🔎 Pencarian gambar
   { id: 1, from: "sam", head: true, time: "20:20", text: "!img special_week_(umamusume)" },
-  { id: 2, from: "bot", head: true, time: "20:20", type: "image", letter: "🖼️",
+  { id: 2, from: "bot", head: true, time: "20:20", type: "image", image: "/images/image2.png", letter: "🖼️",
     caption: [
       "🖼️ Hasil Gambar\n\n👤 Karakter: special_week_(umamusume)\n🔢 Kode Sesi: 4821\n🆔 Kode Gambar: 7312045\n➡️ Ketik 4821 (siapa saja boleh) atau !next untuk gambar lain dari pencarian ini",
     ] },
 
   // 🎞️ Pencarian GIF
   { id: 3, from: "sam", head: true, time: "20:21", text: "!gif anime reaction" },
-  { id: 4, from: "bot", head: true, time: "20:21", type: "image", letter: "GIF",
+  { id: 4, from: "bot", head: true, time: "20:21", type: "image", image: "/images/gif.gif", letter: "GIF",
     caption: ["🎞️ Hasil GIF (TENOR)\n\n🔎 Keyword: anime reaction\n🔢 Kode Sesi: 5307"] },
 
   // 🎨 Stiker
   { id: 5, from: "sam", head: true, time: "20:22", text: "!sbrat capek banget hari ini 😭" },
-  { id: 6, from: "bot", head: true, time: "20:22", type: "image", letter: "capek banget hari ini 😭",
+  { id: 6, from: "bot", head: true, time: "20:22", type: "image", image: "/images/image3.png", letter: "capek banget hari ini 😭",
     caption: [] },
 
   // 📥 Download media
@@ -77,8 +89,8 @@ export const COMMAND_SCENARIO = [
   { id: 8, from: "bot", head: true, time: "20:23", text: "🎧 judul-lagu.mp3  (4,2 MB)" },
 
   // 🖼️ AI upscale
-  { id: 9, from: "sam", head: true, time: "20:24", type: "image", letter: "SD", caption: ["!hd"] },
-  { id: 10, from: "bot", head: true, time: "20:24", type: "image", letter: "HD",
+  { id: 9, from: "sam", head: true, time: "20:24", type: "image", image: "/images/image4.png", letter: "SD", caption: ["!hd"] },
+  { id: 10, from: "bot", head: true, time: "20:24", type: "image", image: "/images/image5.png", letter: "HD",
     caption: ["✨ Selesai di-upscale"] },
 
   // 📄 Dokumen

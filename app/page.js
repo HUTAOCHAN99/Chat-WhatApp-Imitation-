@@ -44,7 +44,7 @@ function Message({ m }) {
           </div>
         )}
         {m.type === "image" && (
-          <div className="pic">{m.image ? <img src={m.image} alt="" /> : m.letter}</div>
+          <div className={"pic" + (m.image ? " photo" : "")}>{m.image ? <img src={m.image} alt="" /> : m.letter}</div>
         )}
         {q && (
           <div className="quote" style={{ borderLeftColor: q.color }}>
