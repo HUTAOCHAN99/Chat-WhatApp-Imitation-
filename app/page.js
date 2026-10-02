@@ -1,34 +1,23 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
+import { CHAT_SCENARIO, COMMAND_SCENARIO } from "./scenario";
 
 /* ====== DATA — ganti sesuai kebutuhan ======
    avatar: URL gambar di /public (mis. "/bot.png"); kalau kosong dipakai huruf. */
 const PEOPLE = {
   bot: { name: "Agemasen Bot", color: "#e8c36a", bg: "#c9757d", letter: "A", avatar: "/images/image.png" },
-  sam: { name: "~ Sam", color: "#53bdeb", bg: "#1f3a5f", letter: "S", avatar: "", phone: "+62 889-8352-1506" },
+  sam: { name: "user1", color: "#53bdeb", bg: "#1f3a5f", letter: "U", avatar: "" },
 };
 const GROUP = {
-  title: "Perang Karbit Kedua | PGC(K) Agemasen Bot",
-  members: "Agemasen, Alfi, Andimukramin, Bang, Dio, Dryl, Muhammad, +62 856-9174-8362, +62 815-3425-7577, +62 895-3669-26019, +62 822-4551-9737, +62 896-8456-9202, +62 895-0823-8687, +62 877-2601-5833, +62 896...",
+  title: "Grup Random",
+  members: "user1, user2, user3, user4, user5, user6, user7, user8, user9, user10, Agemasen Bot",
   avatar: "/images/image.png",
 };
-const INIT = [
-  { id: 1, from: "me", type: "image", image: "", letter: "好", time: "23:29",
-    caption: [{ m: "@Agemasen Bot" }, " apakah dialog nice nature itu kira kira artinya \"trainer,aku menyukai mu\""] },
-  { id: 2, from: "bot", head: true, time: "23:29", text: "E-eh?! Itu kan..." },
-  { id: 3, from: "bot", time: "23:30", text: "**Special Week langsung mencondongkan tubuhnya ke depan, membaca tulisan Jepang di kotak dialog gambar itu dengan saksama. Ia mendengus pelan sambil melipat tangan di depan dada, berusaha sok tenang meski wajahnya makin merona.**" },
-  { id: 4, from: "bot", time: "23:30", text: "Hm, kalau dari tulisannya (**\"Trainer-san no koto ga suki nano!\"**), ya kurang lebih artinya memang benar begitu... Yaitu **\"Aku menyukai Trainer-san!\"** atau bisa dibilang dia lagi menyatakan perasaan sukanya secara langsung." },
-  { id: 5, from: "bot", time: "23:30", text: "**Special Week melirik sekilas ke arah gambar Nice Nature yang lagi blushing parah itu, lalu membuang muka dengan bibir mengerucut.**" },
-  { id: 6, from: "bot", time: "23:30", text: "Iiih, Neicha keliatan malu-malu tapi nekat banget ngomong kayak gitu... **Special Week mengetukkan jarinya ke meja, salah tingkah sendiri.** Kenapa kamu malah nyanyain dialog itu ke aku, hah?! Mau pamer atau sengaja mau bikin aku ikut salah tingkah gara-gara lihat ekspresinya yang merah padam gitu, hah?!" },
-  { id: 7, from: "bot", time: "23:30", text: "**Special Week memalingkan wajahnya dengan kasar sambil mendengus kesal. Jangan salah paham, ya!** Bukan berarti aku iri atau pengen digituin juga, lho! Sana nikmatin aja gambarnya sendiri, nggak usah nanya-nanya ke aku lagi! 😤✨" },
-  { id: 8, from: "sam", head: true, time: "23:30",
-    quote: { who: "bot", text: "**Special Week memalingkan wajahnya dengan kasar sambil mendengus kesal. Jangan salah paham, ya!** Bukan berarti aku iri atau pengen digituin juga, lho! Sana nikmatin aja gambarnya sendiri, nggak usah nanya-nanya ke aku lagi! 😤✨" },
-    big: "🥕🥕🥕" },
-  { id: 9, from: "bot", head: true, time: "23:31", quote: { who: "sam", text: "🥕🥕🥕" }, text: "" },
-];
+const SCENARIOS = { chat: CHAT_SCENARIO, command: COMMAND_SCENARIO };
 
-const rich = (s) => s.split(/(\*\*[^*]+\*\*)/g).map((p, i) =>
-  p.startsWith("**") ? <b key={i}>{p.slice(2, -2)}</b> : p);
+const rich = (s) => s.split(/(\*\*[^*]+\*\*|@Agemasen Bot)/g).map((p, i) =>
+  p === "@Agemasen Bot" ? <span key={i} className="mention">{p}</span> :
+    p.startsWith("**") ? <b key={i}>{p.slice(2, -2)}</b> : p);
 
 const Avatar = ({ p, size = 32, fs = 14 }) => (
   <div className="av" style={{ width: size, height: size, fontSize: fs, background: p.bg }}>
@@ -79,7 +68,9 @@ function Message({ m }) {
 }
 
 export default function Page() {
-  const [msgs, setMsgs] = useState([INIT[0]]);
+  const [mode, setMode] = useState("chat");
+  const INIT = SCENARIOS[mode];
+  const [msgs, setMsgs] = useState([SCENARIOS.chat[0]]);
   const [val, setVal] = useState("");
   const [typing, setTyping] = useState(false);
   const end = useRef(null);
@@ -88,6 +79,8 @@ export default function Page() {
   useEffect(() => {
     let timer;
     let index = 1;
+    setMsgs([INIT[0]]);
+    setTyping(false);
     let cancelled = false;
 
     const appendNext = () => {
@@ -126,7 +119,7 @@ export default function Page() {
       cancelled = true;
       window.clearTimeout(timer);
     };
-  }, []);
+  }, [mode]);
 
   const send = () => {
     if (!val.trim()) return;
@@ -154,6 +147,15 @@ export default function Page() {
       <div className="pin">
         <I d="M12 17v5M9 3h6l-1 7 3 3v2H7v-2l3-3-1-7z" s={18} />
         <span><b>Agemasen:</b> 🎧 Audio</span>
+      </div>
+      <div style={{ display: "flex", gap: 8, padding: "6px 12px", background: "#111b21" }}>
+        {[["chat", "💬 Skenario ngobrol"], ["command", "⌨️ Contoh command"]].map(([k, label]) => (
+          <button key={k} onClick={() => setMode(k)}
+            style={{ cursor: "pointer", border: 0, borderRadius: 16, padding: "5px 12px", fontSize: 12.5,
+              color: mode === k ? "#111b21" : "#e9edef", background: mode === k ? "#00a884" : "#233138" }}>
+            {label}
+          </button>
+        ))}
       </div>
       <div className="chat">
         {msgs.map((m) => <Message key={m.id} m={m} />)}
